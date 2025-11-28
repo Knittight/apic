@@ -16,7 +16,7 @@ def parse_args():
     parser.add_argument("-pu", action="store_true", help="PUT request")
     parser.add_argument("-pa", action="store_true", help="PATCH request")
     parser.add_argument("-d", action="store_true", help="DELETE request")
-    parser.add_argument("-h", action="store_true", help="HEAD request")
+    parser.add_argument("-he", action="store_true", help="HEAD request")
 
     # Headers, body, file upload, query
     parser.add_argument("-H", "--header", action="append", help="Custom headers: -H 'Authorization: TOKEN'")
