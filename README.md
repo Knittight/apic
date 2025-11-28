@@ -59,7 +59,7 @@ apic https://api.example.com/data -g -o response.json
 
 - Download the .deb package from GitHub Releases:
 ```
-wget https://github.com/galaxyg144/apic/releases/download/v1.0.0/apic.deb
+wget https://github.com/galaxyg144/apic/releases/latest/download/apic.deb
 ```
 
 - Install it:
