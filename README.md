@@ -77,6 +77,4 @@ apic https://example.com -g
 
 - Make sure python3 and python3-requests are installed.
 
-- The terminal banner prints “apic is so epic!” every time you run a command.
-
 - Flags can be combined as needed (-p -B '{"key":"value"}' -H "Auth: TOKEN").
