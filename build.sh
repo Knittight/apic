@@ -2,28 +2,35 @@
 
 set -e
 
-PKG_DIR="$(pwd)"        # The folder this script is in
-PKG_NAME="apic"         # Name of the package
-OUTPUT="${PKG_NAME}.deb"
+PKG_NAME="apic"          # Package name
+VERSION="1.0"            # Version
+BUILD_DIR="$(pwd)/build" # Temporary build directory
+OUTPUT="${PKG_NAME}_${VERSION}_all.deb"
 
-echo "== Building ${PKG_NAME}.deb =="
+echo "== Building ${PKG_NAME}.deb from usr/local/bin =="
 
-# Make sure the main script is executable
-if [ -f usr/local/bin/apic ]; then
-    chmod +x usr/local/bin/apic
-else
-    echo "ERROR: usr/local/bin/apic not found!"
-    exit 1
-fi
+# Clean previous build
+rm -rf "$BUILD_DIR"
+mkdir -p "$BUILD_DIR/usr/local/bin"
+mkdir -p "$BUILD_DIR/DEBIAN"
 
-# Check control file
+# Copy DEBIAN/control
 if [ ! -f DEBIAN/control ]; then
-    echo "ERROR: DEBIAN/control file missing!"
+    echo "ERROR: DEBIAN/control file not found!"
     exit 1
 fi
+cp DEBIAN/control "$BUILD_DIR/DEBIAN/"
+
+# Copy Python script
+if [ ! -f usr/local/bin/$PKG_NAME ]; then
+    echo "ERROR: usr/local/bin/$PKG_NAME not found!"
+    exit 1
+fi
+cp usr/local/bin/$PKG_NAME "$BUILD_DIR/usr/local/bin/"
+chmod +x "$BUILD_DIR/usr/local/bin/$PKG_NAME"
 
 # Build the .deb
-dpkg-deb --build "$PKG_DIR" "$OUTPUT"
+dpkg-deb --build "$BUILD_DIR" "$OUTPUT"
 
 echo ""
 echo "Build complete!"
