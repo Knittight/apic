@@ -30,7 +30,7 @@ def parse_args():
     parser.add_argument("-t", type=int, default=10, help="Request timeout in seconds")  # short flag for timeout
 
        # Version flag
-    parser.add_argument("--version", action="version", version="apic 1.0.2", help="Show program version and exit")
+    parser.add_argument("--version", action="version", version="apic 1.0.0_kt", help="Show program version and exit")
 
 
         # If no arguments are provided, show help
