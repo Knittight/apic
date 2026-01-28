@@ -3,5 +3,10 @@
   "version": "1.0.0",
   "description": "API Client but on the line!",
   "owner": "galaxyg144 @ Knittight",
-  "dependencies": []
+  "dependencies": [
+    "apt:python3-requests",
+    "pacman:python-requests",
+    "dnf:python3-requests",
+    "pip:requests"
+  ]
 }
